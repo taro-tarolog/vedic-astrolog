@@ -124,19 +124,21 @@
       <div>
         <span class="eyebrow">Заявка</span>
         <h2 style="font-family:'Cormorant',serif;font-size:34px;margin:14px 0 22px">Оставьте заявку на разбор</h2>
-        <form id="lead" novalidate>
+        <form id="lead" action="https://formspree.io/f/maqkzprd" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Новая заявка с сайта — астролог Юлия">
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-grid">
             <div class="field">
               <label for="name">Имя</label>
-              <input id="name" name="name" type="text" placeholder="Как к вам обращаться" required>
+              <input id="name" name="Имя" type="text" placeholder="Как к вам обращаться" required>
             </div>
             <div class="field">
               <label for="contact">Telegram / телефон</label>
-              <input id="contact" name="contact" type="text" placeholder="@ник или +7…" required>
+              <input id="contact" name="Контакт" type="text" placeholder="@ник или +7…" required>
             </div>
             <div class="field full">
               <label for="topic">Формат консультации</label>
-              <select id="topic" name="topic">
+              <select id="topic" name="Формат консультации">
                 <option>Натальная карта (знакомство)</option>
                 <option>Прогноз на год (даши и транзиты)</option>
                 <option>Совместимость пары</option>
@@ -147,11 +149,12 @@
             </div>
             <div class="field full">
               <label for="msg">Ваш запрос</label>
-              <textarea id="msg" name="msg" placeholder="Коротко опишите, что хотите разобрать. Если знаете — укажите дату, время и место рождения."></textarea>
+              <textarea id="msg" name="Запрос" placeholder="Коротко опишите, что хотите разобрать. Если знаете — укажите дату, время и место рождения."></textarea>
             </div>
           </div>
-          <div class="form-msg ok" id="okmsg">Спасибо! Заявка готова к отправке. Я свяжусь с вами в течение дня.</div>
-          <button type="submit" class="btn btn-primary" style="margin-top:18px;width:100%;justify-content:center">Отправить заявку</button>
+          <div class="form-msg ok" id="okmsg">Спасибо! Заявка отправлена — я свяжусь с вами в течение дня.</div>
+          <div class="form-msg err" id="errmsg" style="display:none">Не удалось отправить. Напишите мне напрямую в Telegram или на почту — контакты выше.</div>
+          <button type="submit" class="btn btn-primary" id="submitBtn" style="margin-top:18px;width:100%;justify-content:center">Отправить заявку</button>
           <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку данных для ответа на обращение. Я не передаю ваши данные третьим лицам.</p>
         </form>
       </div>
@@ -176,18 +179,50 @@
 
 <script>
   document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
-  // Демо-обработка формы. Для реальной отправки подключите Formspree (action="https://formspree.io/f/ВАШ_ID" method="POST") или Telegram-бота.
-  document.getElementById('lead').addEventListener('submit', function(e){
+
+  // Отправка заявки через Formspree (AJAX — без перезагрузки страницы)
+  var form = document.getElementById('lead');
+  var btn = document.getElementById('submitBtn');
+  var ok = document.getElementById('okmsg');
+  var err = document.getElementById('errmsg');
+
+  form.addEventListener('submit', function(e){
     e.preventDefault();
+    ok.style.display = 'none';
+    err.style.display = 'none';
+
     var name = document.getElementById('name').value.trim();
     var contact = document.getElementById('contact').value.trim();
     if(!name || !contact){
-      alert('Пожалуйста, укажите имя и способ связи.');
+      err.textContent = 'Пожалуйста, укажите имя и способ связи.';
+      err.style.display = 'block';
       return;
     }
-    document.getElementById('okmsg').style.display = 'block';
-    this.reset();
-    document.getElementById('okmsg').scrollIntoView({behavior:'smooth', block:'center'});
+
+    btn.disabled = true;
+    var label = btn.textContent;
+    btn.textContent = 'Отправляем…';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(res.ok){
+        form.reset();
+        ok.style.display = 'block';
+        ok.scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        err.textContent = 'Не удалось отправить. Напишите мне напрямую в Telegram или на почту — контакты выше.';
+        err.style.display = 'block';
+      }
+    }).catch(function(){
+      err.textContent = 'Нет связи с сервером. Напишите мне напрямую в Telegram или на почту — контакты выше.';
+      err.style.display = 'block';
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = label;
+    });
   });
 </script>
 </body>

@@ -330,6 +330,7 @@ section { padding: 70px 0; }
 .form-note { font-size: 13px; color: var(--muted-2); margin-top: 6px; }
 .form-msg { display: none; padding: 14px 16px; border-radius: var(--r-sm); font-size: 14.5px; margin-top: 4px; }
 .form-msg.ok { display: block; background: rgba(64,180,120,0.14); border: 1px solid rgba(64,180,120,0.4); color: #8ee0b4; }
+.form-msg.err { display: block; background: rgba(220,90,90,0.14); border: 1px solid rgba(220,90,90,0.45); color: #f0a3a3; }
 
 /* --- Контакт-каналы --- */
 .channels { display: grid; gap: 14px; }
