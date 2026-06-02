@@ -37,6 +37,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://vedic-astrolog.vercel.app/blog/12-domov-goroskopa/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vedic-astrolog.vercel.app/blog/saturn-v-dzhyotish/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vedic-astrolog.vercel.app/blog/prednaznachenie-d10/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://vedic-astrolog.vercel.app/contacts/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
