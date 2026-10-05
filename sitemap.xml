@@ -361,6 +361,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://vedic-astrolog.vercel.app/blog/nakshatra-svati/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://vedic-astrolog.vercel.app/blog/chto-takoe-nakshatry/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
