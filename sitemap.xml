@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://vedic-astrolog.vercel.app/blog/nakshatra-po-date-rozhdeniya/</loc>
-    <lastmod>2026-06-03</lastmod>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -446,7 +446,13 @@
   </url>
   <url>
     <loc>https://vedic-astrolog.vercel.app/blog/chto-takoe-nakshatry/</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vedic-astrolog.vercel.app/blog/kogda-vyydu-zamuzh/</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
